@@ -23,6 +23,14 @@
           }
         },
         {
+          "client_id": "426362836905-rq6p5stgnhts1flge0q5soklmgv8stun.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ayanamirzhana.mypet",
+            "certificate_hash": "c2906d2194a45629775738625af6ed73e217ac8e"
+          }
+        },
+        {
           "client_id": "426362836905-9d7hmhguldqmc6rl4ql2b06t2pr2goil.apps.googleusercontent.com",
           "client_type": 3
         }
