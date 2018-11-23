@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "426362836905",
+    "firebase_url": "https://mypet-b9854.firebaseio.com",
+    "project_id": "mypet-b9854",
+    "storage_bucket": "mypet-b9854.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:426362836905:android:be956704c1e84597",
+        "android_client_info": {
+          "package_name": "com.ayanamirzhana.mypet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "426362836905-qsmkh2u7c605sv7ndmf0lum6i3fh62la.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ayanamirzhana.mypet",
+            "certificate_hash": "31ab3c78337345d1172f1d4924818d86a8411147"
+          }
+        },
+        {
+          "client_id": "426362836905-9d7hmhguldqmc6rl4ql2b06t2pr2goil.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJ6QxnDGvPAnF4JISonMTV3QKmPgLAMe4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "426362836905-9d7hmhguldqmc6rl4ql2b06t2pr2goil.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
