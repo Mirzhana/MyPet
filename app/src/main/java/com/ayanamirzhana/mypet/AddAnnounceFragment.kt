@@ -12,6 +12,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+<<<<<<< HEAD
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
@@ -24,6 +25,12 @@ import com.google.firebase.storage.FirebaseStorage
 
 import java.io.IOException
 import java.util.*
+=======
+import android.widget.ArrayAdapter
+import android.widget.Toast
+import com.ayanamirzhana.mypet.models.Announcement
+import kotlinx.android.synthetic.main.fragment_add_announce.*
+>>>>>>> f76ba2fc4abf109ca8c9a6955d897943cc3875ee
 
 class AddAnnounceFragment : Fragment() {
     private var ctx: Context? = null
@@ -110,9 +117,29 @@ class AddAnnounceFragment : Fragment() {
                 }
     }
 
+<<<<<<< HEAD
     fun uploadAnnouncement(announcement: Announcement) {
         val myRef = FirebaseDatabase.getInstance().getReference("announcements")
         val id = myRef.push().key
         myRef.child(id!!).setValue(announcement)
+=======
+
+
+    fun getValues(view: View) {
+        // get category
+        val adapter = ArrayAdapter.createFromResource(activity,
+                R.array.categories_list, android.R.layout.simple_spinner_item)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinner2.adapter = adapter
+        val category = spinner2.selectedItem.toString()
+        val details = description.text
+
     }
+
+    companion object {
+        fun newInstance(): AddAnnounceFragment = AddAnnounceFragment()
+>>>>>>> f76ba2fc4abf109ca8c9a6955d897943cc3875ee
+    }
+
 }
+
