@@ -11,17 +11,17 @@ class HomeActivity : AppCompatActivity() {
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_home -> {
-                val homeFragment = HomeFragment.newInstance()
+                val homeFragment = HomeFragment()
                 openFragment(homeFragment)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_add -> {
-                val addFragment = AddAnnounceFragment.newInstance()
+                val addFragment = AddAnnounceFragment()
                 openFragment(addFragment)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_profile -> {
-                val profileFragment = ProfileFragment.newInstance()
+                val profileFragment = ProfileFragment()
                 openFragment(profileFragment)
                 return@OnNavigationItemSelectedListener true
             }
@@ -40,5 +40,6 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+        openFragment(HomeFragment())
     }
 }

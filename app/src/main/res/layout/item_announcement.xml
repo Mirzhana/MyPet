@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="8dp"
+    android:background="@color/colorAccent">
+
+    <ImageView
+        android:id="@+id/image_pet"
+        android:layout_width="100dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_height="100dp" />
+
+    <TextView
+        android:id="@+id/text_title_pet"
+        android:layout_width="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/image_pet"
+        android:text="Title"
+        android:textSize="20dp"
+        android:layout_marginLeft="10dp"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/text_desc_pet"
+        app:layout_constraintTop_toBottomOf="@id/text_title_pet"
+        app:layout_constraintLeft_toRightOf="@id/image_pet"
+        android:layout_marginLeft="10dp"
+        android:textSize="18sp"
+        android:text="descr"
+        android:textColor="@color/design_default_color_primary"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/text_contact_pet"
+        app:layout_constraintTop_toBottomOf="@id/text_desc_pet"
+        app:layout_constraintLeft_toRightOf="@id/image_pet"
+        android:layout_marginLeft="10dp"
+        android:textSize="18sp"
+        android:text="8778"
+        android:textColor="@color/design_default_color_primary"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/text_category_pet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dogs"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+</android.support.constraint.ConstraintLayout>
