@@ -1,9 +1,14 @@
 package com.ayanamirzhana.mypet.model
 
+import android.arch.persistence.room.Entity
 import android.os.Parcel
 import android.os.Parcelable
+import android.arch.persistence.room.PrimaryKey
 
-data class Announcement(var title: String,
+@Entity(tableName = "announcement")
+
+data class Announcement(
+                        @PrimaryKey var title: String,
                         var category: String,
                         var description: String,
                         var contact: String,

@@ -32,12 +32,11 @@ class HomeFragment : Fragment() {
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 dataSnapshot.children.forEach {
-                    dataset.add(Announcement(dataSnapshot.child("title").value.toString(),
-                                            dataSnapshot.child("category").value.toString(),
-                                            dataSnapshot.child("description").value.toString(),
-                                            dataSnapshot.child("contact").value.toString(),
-
-                                            dataSnapshot.child("imageUrl").value.toString()
+                    dataset.add(Announcement(it.child("title").value.toString(),
+                                            it.child("category").value.toString(),
+                                            it.child("description").value.toString(),
+                                            it.child("contact").value.toString(),
+                                            it.child("imageUrl").value.toString()
                             ))
                 }
 
@@ -52,9 +51,10 @@ class HomeFragment : Fragment() {
         return root
     }
 
-    fun loadDataset(dataset: ArrayList<Announcement>) {
+    fun loadDataset (dataset: ArrayList<Announcement>) {
         recycler.layoutManager = LinearLayoutManager(activity)
         recycler.adapter = HomeAdapter(activity!!, dataset)
+
     }
 
 

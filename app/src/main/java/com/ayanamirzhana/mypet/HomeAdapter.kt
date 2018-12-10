@@ -1,6 +1,8 @@
 package com.ayanamirzhana.mypet
 
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -24,7 +26,7 @@ class HomeAdapter(var context: Context, var dataset: ArrayList<Announcement>) : 
     override fun onBindViewHolder(p0: RecyclerView.ViewHolder, p1: Int) {
         val announcement = dataset[p1]
 
-        Picasso.get().load(announcement.imageUrl).into(p0.itemView.image_pet)
+        Picasso.get().load(announcement.imageUrl).resize(100,100).centerCrop().into(p0.itemView.image_pet)
         p0.itemView.text_title_pet.text = announcement.title
         p0.itemView.text_category_pet.text = announcement.category
         p0.itemView.text_desc_pet.text = announcement.description
@@ -35,6 +37,10 @@ class HomeAdapter(var context: Context, var dataset: ArrayList<Announcement>) : 
     inner class AnnouncementViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         init {
             view.setOnClickListener {
+                val act = context as Activity
+
+                act.startActivityForResult(Intent(context, DetailsActivity::class.java).putExtra("announcement", dataset[adapterPosition]), 1)
+
 
             }
         }

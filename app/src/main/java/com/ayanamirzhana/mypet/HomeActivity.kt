@@ -20,11 +20,11 @@ class HomeActivity : AppCompatActivity() {
                 openFragment(addFragment)
                 return@OnNavigationItemSelectedListener true
             }
-            R.id.navigation_profile -> {
-                val profileFragment = ProfileFragment()
-                openFragment(profileFragment)
-                return@OnNavigationItemSelectedListener true
-            }
+//            R.id.navigation_profile -> {
+//                val profileFragment = ProfileFragment()
+//                openFragment(profileFragment)
+//                return@OnNavigationItemSelectedListener true
+//            }
         }
         false
     }

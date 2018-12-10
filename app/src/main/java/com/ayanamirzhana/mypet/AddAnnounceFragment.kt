@@ -12,31 +12,30 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-<<<<<<< HEAD
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
 import android.widget.Toast
 import com.ayanamirzhana.mypet.model.Announcement
+import com.ayanamirzhana.mypet.presenter.AddAnnouncePresenter
+import com.ayanamirzhana.mypet.view.AddAnnounceView
+import com.google.android.gms.tasks.Continuation
+import com.google.android.gms.tasks.Task
 
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.UploadTask
 
 import java.io.IOException
 import java.util.*
-=======
-import android.widget.ArrayAdapter
-import android.widget.Toast
-import com.ayanamirzhana.mypet.models.Announcement
-import kotlinx.android.synthetic.main.fragment_add_announce.*
->>>>>>> f76ba2fc4abf109ca8c9a6955d897943cc3875ee
 
-class AddAnnounceFragment : Fragment() {
+class AddAnnounceFragment : Fragment(), AddAnnounceView {
     private var ctx: Context? = null
     private var self: View? = null
     private var url = ""
     var imgCode = 0
+    private lateinit var presenter: AddAnnouncePresenter
 
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
@@ -51,6 +50,7 @@ class AddAnnounceFragment : Fragment() {
         val contactEdit = self?.findViewById<EditText>(R.id.contact)
         val spinner = self?.findViewById<Spinner>(R.id.spinner2)
 
+        presenter = AddAnnouncePresenter(this)
 
         bDaButton?.setOnClickListener {
             /*Toast.makeText(ctx, "button works!", Toast.LENGTH_SHORT).show()
@@ -71,7 +71,8 @@ class AddAnnounceFragment : Fragment() {
 
             if (!title.isEmpty() && !description.isEmpty() && !spinnerText.isEmpty() && !downloadImageUrl.isEmpty() && !contact.isEmpty()) {
                 val announcement = Announcement(title,  spinnerText, description, contact, downloadImageUrl)
-                uploadAnnouncement(announcement)
+                presenter.uploadAnnouncement(announcement)
+                Toast.makeText(ctx, "Announcement is added!", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -107,6 +108,28 @@ class AddAnnounceFragment : Fragment() {
         val imageRef =
                 storage.child("images/" + FirebaseAuth.getInstance().currentUser?.uid + "_" + currentTime + ".jpg")
 
+        val uploadTask = imageRef.putFile(uri)
+
+        val urlTask = uploadTask.continueWithTask(Continuation<UploadTask.TaskSnapshot, Task<Uri>> { task ->
+            if (!task.isSuccessful) {
+                task.exception?.let {
+                    throw it
+                }
+            }
+            return@Continuation imageRef.downloadUrl
+        }).addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                val downloadUri = task.result
+                url = downloadUri.toString()
+            } else {
+                // Handle failures
+                // ...
+            }
+        }
+
+
+        /*val durl = imageRef.downloadUrl
+
         imageRef.putFile(uri)
                 .addOnSuccessListener {
                     val downloadUrl = imageRef.downloadUrl
@@ -114,32 +137,12 @@ class AddAnnounceFragment : Fragment() {
                 }
                 .addOnFailureListener {
                     Toast.makeText(ctx, "Failed to add image!", Toast.LENGTH_SHORT).show()
-                }
+                }*/
     }
 
-<<<<<<< HEAD
-    fun uploadAnnouncement(announcement: Announcement) {
-        val myRef = FirebaseDatabase.getInstance().getReference("announcements")
-        val id = myRef.push().key
-        myRef.child(id!!).setValue(announcement)
-=======
-
-
-    fun getValues(view: View) {
-        // get category
-        val adapter = ArrayAdapter.createFromResource(activity,
-                R.array.categories_list, android.R.layout.simple_spinner_item)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinner2.adapter = adapter
-        val category = spinner2.selectedItem.toString()
-        val details = description.text
-
-    }
-
-    companion object {
-        fun newInstance(): AddAnnounceFragment = AddAnnounceFragment()
->>>>>>> f76ba2fc4abf109ca8c9a6955d897943cc3875ee
-    }
-
+//    fun uploadAnnouncement(announcement: Announcement) {
+//        val myRef = FirebaseDatabase.getInstance().getReference("announcements")
+//        val id = myRef.push().key
+//        myRef.child(id!!).setValue(announcement)
+//    }
 }
-
