@@ -9,8 +9,9 @@ class AddAnnouncePresenter(var view: AddAnnounceView) {
     fun uploadAnnouncement(announcement: Announcement) {
         val myRef = FirebaseDatabase.getInstance().getReference("announcements")
         val id = myRef.push().key
-        myRef.child(id!!).setValue(announcement)
 
-        // view.updateUI()
+        id?.let {
+        	myRef.child(it).setValue(announcement)	
+        }
     }
 }

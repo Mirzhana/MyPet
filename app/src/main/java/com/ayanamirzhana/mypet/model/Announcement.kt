@@ -6,21 +6,22 @@ import android.os.Parcelable
 import android.arch.persistence.room.PrimaryKey
 
 @Entity(tableName = "announcement")
-
 data class Announcement(
-                        @PrimaryKey var title: String,
-                        var category: String,
-                        var description: String,
-                        var contact: String,
-                        var imageUrl: String) : Parcelable {
-
+    @PrimaryKey 
+    var title: String,
+    var category: String,
+    var description: String,
+    var contact: String,
+    var imageUrl: String
+) : Parcelable {
 
     constructor(parcel: Parcel) : this(
             parcel.readString(),
             parcel.readString(),
             parcel.readString(),
             parcel.readString(),
-            parcel.readString())
+            parcel.readString()
+    )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(title)
