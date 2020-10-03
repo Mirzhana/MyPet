@@ -2,7 +2,6 @@ package com.ayanamirzhana.mypet.model
 import com.google.firebase.database.IgnoreExtraProperties
 
 @IgnoreExtraProperties
-
 class UploadInfo {
     var name: String = ""
     var url: String = ""
